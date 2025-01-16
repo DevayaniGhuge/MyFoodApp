@@ -1,0 +1,250 @@
+/* General Reset */
+body {
+  margin: 50px;
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  width: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 70px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.svgs {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 50px;
+}
+
+.full-hero {
+  margin-top: 4rem;
+  display: flex;
+  border-radius: 15%;
+}
+
+.hero-text {
+  width: 50%;
+  padding: 4rem;
+  background-color: #E7F9FD;
+  border-radius: 15% 0 0 15%;
+  height: 512px;
+}
+
+.taste {
+  font-size: 3rem;
+}
+
+.timer {
+  height: 30px;
+  width: 139px;
+  text-align: center;
+  border: none;
+  background-color: #E7F9FD;
+  border-radius: 19px;
+  margin-top: 2rem;
+}
+
+.login-button {
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  text-size-adjust: 138 24;
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+  margin-top: 4rem;
+  cursor: pointer;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5rem;
+}
+
+.categories {
+  font-size: 3rem;
+}
+
+.view-all-categories {
+  height: 60px;
+  width: 200px;
+  text-align: center;
+  border: none;
+  background-color: #E7F9FD;
+  border-radius: 12px;
+}
+
+.card-conatainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: fixed;
+  margin-top: 5rem;
+}
+
+.card {
+  color: light-dark(#333b3c, #efefec);
+  background-color: light-dark(#efedea, #223a2c);
+  border-radius: 15%;
+  width: 180px;
+  height: 202px;
+}
+
+.card-image {
+  height: 100px;
+  width: 100px;
+  margin-left: 2.5rem;
+}
+
+.simple {
+  font-size: 3rem;
+}
+
+.burger-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.names {
+  text-align: center;
+}
+
+.heading {
+  text-align: center;
+  margin: 10rem 0 7rem 0;
+}
+
+.burger {
+  background-color: #E7F9FD;
+  border-radius: 15%;
+  padding: 16 16 0 16;
+}
+
+.b-button {
+  background: none;
+  border: none;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+
+.text-img {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.site {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.img-container {
+  position: relative;
+  /* Allows positioning of child elements */
+  width: 400px;
+  /* Set container width */
+  height: 400px;
+  /* Set container height */
+}
+
+.back-img {
+  width: 400px;
+  /* Make the background image fill the container */
+  height: 400px;
+  /* Maintain container's height */
+  object-fit: cover;
+  /* Ensure image fits nicely */
+
+}
+
+.upper-img {
+  position: absolute;
+  /* Position it relative to the container */
+  top: 75%;
+  /* Center vertically */
+  left: 50%;
+  /* Center horizontally */
+  transform: translate(-50%, -50%);
+  /* Adjust for perfect centering */
+  /* width: 100px; */
+  /* Set desired size for the overlay image */
+  /* height: auto; */
+  /* Maintain aspect ratio */
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  margin-top: 15rem;
+}
+
+.footer-logo {
+  width: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 70px;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.end {
+  text-align: center;
+  margin-top: 8rem;
+}

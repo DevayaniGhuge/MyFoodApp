@@ -8,6 +8,9 @@ body{
     margin: 0;
     font-family: Arial, sans-serif;
 }
+.alert{
+  height: 100%;
+}
 .signup-container {
     background: #fff;
     padding: 2rem;
@@ -18,6 +21,7 @@ body{
   }
 
   h1,h2 {
+
     text-align: center;
     margin-bottom: 1rem;
   }

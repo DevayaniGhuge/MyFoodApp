@@ -35,6 +35,26 @@ header {
   font-weight: bold;
 }
 
+.home-login, .home-signup{
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  text-size-adjust: 138 24;
+  /* color: white; */
+  background-color: black;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+a:link, a:hover{
+
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
 .svgs {
   display: flex;
   justify-content: space-evenly;

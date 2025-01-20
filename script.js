@@ -1,9 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js"; // For storing additional user info
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyAlXPqKB4EBkh4WbcTI7kVi3Qye5rxK2d0",
     authDomain: "myfoodapp-600.firebaseapp.com",
@@ -17,55 +16,75 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth();
 const database = getDatabase(app);
 
-// For submit button
-const signupbutton = document.getElementById("signupbutton");
+// Enable first-party cookies
+setPersistence(auth, browserLocalPersistence)
+    .then(() => console.log("First-party cookies enabled."))
+    .catch((error) => console.error("Error enabling persistence:", error));
 
-signupbutton.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent default form submission behavior
+// Wait for DOM to load
+document.addEventListener("DOMContentLoaded", () => {
+    // Signup functionality
+    const signupbutton = document.getElementById("signupbutton");
+    if (signupbutton) {
+        signupbutton.addEventListener("click", function (event) {
+            event.preventDefault();
 
-    // Get form values
-    const name = document.getElementById("name").value;
-    const contact = document.getElementById("contact").value;
-    const gender = document.getElementById("gender").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmpassword = document.getElementById("confirmpassword").value;
+            const name = document.getElementById("name").value;
+            const contact = document.getElementById("contact").value;
+            const gender = document.getElementById("gender").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmpassword = document.getElementById("confirmpassword").value;
 
-    // Validate password match
-    if (password !== confirmpassword) {
-        alert("Passwords do not match!");
-        return;
+            if (password !== confirmpassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    alert("Account created successfully!");
+
+                    // Save user data
+                    set(ref(database, "users/" + user.uid), {
+                        name: name,
+                        contact: contact,
+                        gender: gender,
+                        email: email
+                    })
+                        .then(() => alert("User data saved successfully!"))
+                        .catch((error) => console.error("Error saving data:", error));
+                })
+                .catch((error) => alert(`Error: ${error.message} (Code: ${error.code})`));
+        });
     }
 
-    // Create user with email and password
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed up successfully
-            const user = userCredential.user;
-            alert("Account created successfully!");
+    // Login functionality
+    const loginbutton = document.getElementById("loginbutton");
+    if (loginbutton) {
+        loginbutton.addEventListener("click", function (event) {
+            event.preventDefault();
 
-            // Save additional user data to Realtime Database
-            set(ref(database, "users/" + user.uid), {
-                name: name,
-                contact: contact,
-                gender: gender,
-                email: email
-            })
-                .then(() => {
-                    alert("User data saved successfully!");
+            const email = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Login successful!");
+                    window.location.href = "index.html";
                 })
-                .catch((error) => {
-                    console.error("Error saving user data:", error.message);
-                });
-        })
-        .catch((error) => {
-            // Handle errors
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(`Error: ${errorMessage} (Code: ${errorCode})`);
+                .catch((error) => alert(`Login failed: ${error.message} (Code: ${error.code})`));
         });
+    }
 });
+
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const type = field.type === "password" ? "text" : "password";
+    field.type = type;
+}
+

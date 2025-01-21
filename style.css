@@ -38,9 +38,11 @@ header {
 .home-login, .home-signup{
   height: 50px;
   width: 100px;
+  display: flex;
+  justify-content: space-between;
   text-align: center;
   text-size-adjust: 138 24;
-  /* color: white; */
+  color: white;
   background-color: black;
   border-radius: 12px;
   cursor: pointer;
@@ -136,6 +138,12 @@ a:link, a:hover{
   border-radius: 15%;
   width: 180px;
   height: 202px;
+  transition: transform 0.5s;
+}
+.card:hover{
+  background-color:  #E7F9FD;
+  transform: translateY(-10px);
+  box-shadow: 10px 10px 5px rgb(74, 74, 74);
 }
 
 .card-image {
@@ -166,11 +174,22 @@ a:link, a:hover{
   background-color: #E7F9FD;
   border-radius: 15%;
   padding: 16 16 0 16;
+  transition: transform 0.5s;
+}
+.burger p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.burger:hover{
+  transform: translateX(-10px);
+  box-shadow: 10px 10px 5px rgb(74, 74, 74);
 }
 
 .b-button {
   background: none;
   border: none;
+  margin-left: 15%;
 }
 
 .bottom-container {
@@ -267,4 +286,56 @@ footer {
 .end {
   text-align: center;
   margin-top: 8rem;
+}
+.site a{
+  color: white;
+}
+/* Common alert styles */
+.alert {
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* Success alert */
+.alert-success {
+  background-color: #4caf50;
+  border: 1px solid #3e8e41;
+}
+
+/* Warning alert */
+.alert-warning {
+  background-color: #ff9800;
+  border: 1px solid #e68900;
+}
+
+/* Error alert */
+.alert-error {
+  background-color: #f44336;
+  border: 1px solid #d32f2f;
+}
+
+/* Fade-out animation */
+.alert.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 0.9;
+  }
+  to {
+      opacity: 0;
+      visibility: hidden;
+  }
 }

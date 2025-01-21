@@ -32,13 +32,26 @@ document.addEventListener("DOMContentLoaded", () => {
         signupbutton.addEventListener("click", function (event) {
             event.preventDefault();
 
-            const name = document.getElementById("name").value;
-            const contact = document.getElementById("contact").value;
-            const gender = document.getElementById("gender").value;
-            const email = document.getElementById("email").value;
+            const name = document.getElementById("name").value.trim();
+            const contact = document.getElementById("contact").value.trim();
+            const gender = document.getElementById("gender").value.trim();
+            const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value;
             const confirmpassword = document.getElementById("confirmpassword").value;
 
+            // Validate fields
+            if (!name || !contact || !gender || !email || !password || !confirmpassword) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            // Validate password complexity
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 8 characters long and include a number, a special character, and both uppercase and lowercase letters.");
+                return;
+            }
+        
             if (password !== confirmpassword) {
                 alert("Passwords do not match!");
                 return;
@@ -56,7 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         gender: gender,
                         email: email
                     })
-                        .then(() => alert("User data saved successfully!"))
+                        .then(() =>{
+                            alert("User data saved successfully!");
+                            window.location.href = "login.html" ; 
+                        })
                         .catch((error) => console.error("Error saving data:", error));
                 })
                 .catch((error) => alert(`Error: ${error.message} (Code: ${error.code})`));
@@ -69,22 +85,28 @@ document.addEventListener("DOMContentLoaded", () => {
         loginbutton.addEventListener("click", function (event) {
             event.preventDefault();
 
-            const email = document.getElementById("username").value;
+            const email = document.getElementById("username").value.trim();
             const password = document.getElementById("password").value;
+
+            // Validate fields
+            if (!email || !password) {
+                alert("Please enter both email and password.");
+                return;
+            }
 
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     alert("Login successful!");
-                    window.location.href = "index.html";
+                    window.location.href = "index.html"; // Redirect to index.html
                 })
                 .catch((error) => alert(`Login failed: ${error.message} (Code: ${error.code})`));
         });
     }
 });
 
+// Toggle password visibility
 function togglePassword(fieldId) {
     const field = document.getElementById(fieldId);
     const type = field.type === "password" ? "text" : "password";
     field.type = type;
 }
-

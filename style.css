@@ -27,6 +27,13 @@ header {
   margin: 0;
   padding: 0;
 }
+.navbar-links:hover a{
+  color: #76daf1;
+  background-color:  #ffffff;
+  transform: translateY(-1px);
+  border-radius: 15%;
+  /* box-shadow: 10px 10px 5px rgb(74, 74, 74); */
+}
 
 .nav-links li a {
   text-decoration: none;
@@ -154,6 +161,9 @@ a:link, a:hover{
 
 .simple {
   font-size: 3rem;
+}
+.simple:hover{
+  color: #8cdced;
 }
 
 .burger-container {
@@ -290,52 +300,38 @@ footer {
 .site a{
   color: white;
 }
-/* Common alert styles */
-.alert {
-  padding: 15px;
-  margin: 10px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  color: #fff;
-  opacity: 0.9;
-}
 
-/* Success alert */
-.alert-success {
-  background-color: #4caf50;
-  border: 1px solid #3e8e41;
-}
-
-/* Warning alert */
-.alert-warning {
-  background-color: #ff9800;
-  border: 1px solid #e68900;
-}
-
-/* Error alert */
-.alert-error {
-  background-color: #f44336;
-  border: 1px solid #d32f2f;
-}
-
-/* Fade-out animation */
-.alert.fade-out {
-  animation: fadeOut 1s forwards;
-}
-
-@keyframes fadeOut {
-  from {
-      opacity: 0.9;
+  /* Loader overlay */
+  .loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
   }
-  to {
-      opacity: 0;
-      visibility: hidden;
+
+  /* Loader animation */
+  .loader {
+    border: 6px solid #f3f3f3; /* Light gray */
+    border-top: 6px solid #3498db; /* Blue for the spinner */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
   }
-}
+
+  /* Keyframes for spinning animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+

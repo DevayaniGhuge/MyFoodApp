@@ -14,10 +14,10 @@
             <div class="logo">MyFoodApp</div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="order">Order</a></li>
-                    <li><a href="#">Payment</a></li>
-                    <li><a href="#">History</a></li>
+                    <li class="navbar-links"><a href="#">Home</a></li>
+                    <li class="navbar-links"><a href="order">Order</a></li>
+                    <li class="navbar-links"><a href="#">Payment</a></li>
+                    <li class="navbar-links"><a href="#">History</a></li>
                     <button class="home-login"><a style="color: aliceblue;" href="login.html">Login</a></button>
                     <button class="home-signup"><a style="color: aliceblue;" href="signup.html">Signup</a></button>
                 </ul>
@@ -219,9 +219,12 @@
         </footer>
         <p class="end">© 2020 Flowbase. Powered by Webflow</p>
     </div>
-    <!-- Font Awesome for icons -->
+    <div class="loader-overlay" id="loader-overlay">
+        <div class="loader"></div>
+      </div>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="p2.js"></script>
+    <!-- <script type="module" src="p3.js"></script> -->
 </body>
 
 </html>
